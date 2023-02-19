@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.KorTravel.dao.MemberDAO">
+
+	<select id="userInfo" resultType="MemberDTO">
+		select * from member where id = #{id}
+	</select>
+	<update id="userUpdate" parameterType="MemberDTO">
+		UPDATE member SET pw=#{pw}, phone=#{phone}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2} WHERE id=#{id}
+	</update>
+	<select id="userPassword" resultType="MemberDTO" parameterType="String">
+		SELECT id, pw FROM member WHERE id=#{id}
+	</select>
+	<delete id="userDelete" parameterType="String">
+		DELETE FROM member WHERE id= #{id}
+	</delete>
+	<select id="isExistId" parameterType="MemberDTO" resultType="int">
+		SELECT count(id) FROM member WHERE id = #{id}
+	</select>
+	<insert id="member_register" parameterType="MemberDTO">
+		INSERT INTO member (id,pw,email,phone,gender,zipcode,addr1,addr2,profilePhoto) VALUES (#{id},#{pw},#{email},#{phone},#{gender},#{zipcode},#{addr1},#{addr2},#{profilePhoto})
+	</insert>
+	<select id="loginCheck" parameterType="MemberDTO" resultType="MemberDTO">
+		SELECT id, pw FROM member WHERE id=#{id}
+	</select>
+	<select id="checkEmail" parameterType="String" resultType="int">
+		SELECT count(email) FROM member WHERE email=#{email}
+	</select>
+	<update id="edit_Pw" parameterType="MemberDTO">
+		UPDATE member SET pw=#{pw} WHERE email=#{email}
+	</update>
+	<update id="saveProfile" parameterType="MemberDTO">
+		UPDATE member SET profilePhoto=#{profilePhoto} WHERE id=#{id}
+	</update>
+	
+	<select id="getLogin" resultType="MemberDTO">
+		SELECT ip,code,country,lastAccess FROM member WHERE id=#{id}
+	</select>
+	<select id="getLastAccess" parameterType="String" resultType="String">
+		SELECT lastAccess FROM member WHERE id=#{id}
+	</select>
+	<select id="getIp" parameterType="String" resultType="String">
+		SELECT ip FROM member WHERE id=#{id}
+	</select>
+	<select id="getCode" parameterType="String" resultType="String">
+		SELECT code FROM member WHERE id=#{id}
+	</select>
+	<select id="getCountry" parameterType="String" resultType="String">
+		SELECT country FROM member WHERE id=#{id}
+	</select>
+	
+	<insert id="lastAccess" parameterType="String">
+		UPDATE member SET lastAccess=#{nowdate}, ip=#{nowip}, code=#{nowcode}, country=#{nowcountry} WHERE id=#{id}
+	</insert>
+	
+	<select id="inquiryList" parameterType="String" resultType="InquiryDTO">
+		SELECT B.* FROM(
+	SELECT  A.*, ROWNUM() as rn FROM(
+		SELECT * FROM inquiry ORDER BY num DESC 
+			)A where id=#{id}
+	)B WHERE rn BETWEEN #{begin} and #{end}
+	</select>
+	
+	<select id="findIdByEmail" parameterType="String" resultType="String">
+		SELECT id FROM member WHERE email=#{email1}
+	</select>
+	
+	<select id="getIpAddress" parameterType="String" resultType="String">
+		SELECT ip FROM member WHERE id=#{id}
+	</select>
+</mapper>

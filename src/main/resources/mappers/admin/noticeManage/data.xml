@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.care.KorTravel.adminDAO.DataDAO">
+	<insert id = "data" parameterType = "com.care.KorTravel.dto.FacilityDTO">
+		INSERT INTO facilities ( 
+			addr1		-- 주소1
+		  , addr2		-- 주소2
+		  , areaCode
+		  , cat1
+		  , cat2
+		  , cat3
+		  , contentId
+		  , firstImage
+		  , firstImage2
+		  , mapX
+		  , mapY
+		  , sigungucode
+		  , mLevel
+		  , tel
+		  , title
+		  , zipcode
+		) 
+		VALUES
+		<foreach collection = "datas" item = "datas" separator = ",">
+		( 
+			#{ datas.addr1 }
+		  , #{ datas.addr2 }
+		  , #{ datas.areaCode }
+		  , #{ datas.cat1 }
+		  , #{ datas.cat2 }
+		  , #{ datas.cat3 }
+		  , #{ datas.contentId }
+		  , #{ datas.firstImage }
+		  , #{ datas.firstImage2 }
+		  , #{ datas.mapX }
+		  , #{ datas.mapY }
+		  , #{ datas.mLevel }
+		  , #{ datas.sigunguCode }
+		  , #{ datas.tel }
+		  , #{ datas.title }
+		  , #{ datas.zipcode } 
+		)
+		</foreach> 
+	</insert>
+	
+	<select id = "getContentId" resultType = "Integer">
+		SELECT contentId FROM facilities ORDER BY contentId DESC
+	</select>
+	
+	<update id = "insertOverview">
+		UPDATE facilities SET overview = #{ overview } WHERE contentId = #{ contentId }
+	</update>
+</mapper>

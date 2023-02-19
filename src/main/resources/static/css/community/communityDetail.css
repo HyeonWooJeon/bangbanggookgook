@@ -1,0 +1,250 @@
+.communityDetail_main{
+	width : 100%;
+	height : auto;
+}
+
+
+.communityDetail_body{
+	width : 1236px;
+	height : auto;
+	margin : auto;
+	
+}
+
+.communityDetail_head{
+	font-size : 40px;
+	margin-top : 80px;
+	
+	border-bottom: 2px solid #222222;
+	font-weight : bold;
+}
+p{
+	margin : auto;
+	margin-bottom : 20px;
+	font-weight: bold;
+	font-size : 32px;
+}
+
+.communityDetail_title{
+	width : 100%;
+	height : 100.8px;
+	
+	border-bottom : 1px solid #e2e2e2;
+	padding : 20px 0px;
+}
+
+.communityDetail_title_head{
+	font-size : 30px;
+}
+
+
+.view_info_title{
+	font-size: 15px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-left : 10px;
+    color: #222222;
+}
+
+.view_info_item{
+	font-size: 15px;
+    color: #444444;
+    margin-right : 10px;
+}
+.communityDetail_title_head{
+	float : left;
+}
+.communityDetail_title_file{
+	float : right;
+}
+
+.communityDetail_info{
+	padding: 60px 30px 40px 30px;
+    overflow: hidden;
+    font-family: 'Noto Sans KR';
+    font-size: 16px;
+    line-height: 2;
+    
+    border-bottom : 1px solid #e2e2e2;
+}
+
+.communityDetail_footerdiv{
+	margin : 15px 0px 150px 0px;
+}
+
+.footer_bt{
+	float : left;
+    margin-right: 4px;
+    cursor: pointer;
+    width : 75px;
+    height : 30px;
+    background-color : gray;
+    border : 1px solid ;
+    border-radius : 5px;
+    font-size : 12px;
+    font-weight: bold;
+    color : white;
+}
+
+.footerdiv{
+	float:right;
+	margin-left : 100px;
+}
+
+.footer_rightbt{
+	
+    cursor: pointer;
+    width : 75px;
+    height : 30px;
+    background-color : gray;
+    border : 1px solid ;
+    border-radius : 5px;
+    font-size : 12px;
+    font-weight: bold;
+    color : white;
+}
+input[type="button"]{
+	margin : 0px 0px 0px 0px;
+}
+
+.footer_bt:hover, .footer_rightbt:hover{
+	background-color : white;
+	color : gray;
+}
+
+.comment_entireDiv{
+	clear : both;
+	height : auto;
+	width : 100%;
+	padding : 50px 50px;
+}
+
+.comment_first{
+	width  :77%;
+	height : 130px;
+	margin : 20px 50px;
+	border-bottom: 0.5px solid #dbdbdb;
+}
+.user_profilePhotoDiv{
+	float : left;
+	width : 110px;
+	height : 120px;
+}
+
+.user_profile{
+	width : 100px;
+	height : 100px;
+	margin-left: 40px;
+	margin-top: -12px;
+}
+
+.comment_content{
+	height : 60px;
+	
+}
+
+.communityDetail_title_info{
+	float : left;
+}
+
+.my_write_fn{
+	float : right;
+}
+
+.communityDetail_title_midhead{
+	clear : both;
+	padding : 25px 5px 20px;
+}
+
+.comment_edit_button, .comment_delete_button{
+	width : 40px;
+	height : 25px;
+	border: none;
+	cursor : pointer;
+}
+
+.my_write_bt{
+	border : none;
+	background-color : #936c89;
+	font-weight : bold;
+	width :50px;
+	height : 30px;
+	cursor : pointer;
+}
+
+.my_write_bt:hover{
+	background-color : #800080;
+	color : white;
+}
+
+.comment_edit_button, .comment_delete_button {
+	color: #000000;
+	background-color : #ffffff;
+	font-weight: 700;
+}
+
+.comment_edit_button:hover, .comment_delete_button:hover{
+	box-shadow : 3px 3px 3px #c0c0c0;
+	transition-duration: 0.3s;
+	background-color: black;
+	color: white;
+}
+
+.edit_delete_box{
+	margin-left : 88%;
+}
+
+#CRB{
+	width: 50px;
+	height: 30px;
+	font-weight: 700;
+	background-color: black;
+	color: white;
+	margin-top: 15px;
+	margin-left: 830px;
+}
+
+.comment_form{
+	margin-top: 30px;
+}
+
+#comment_form form{
+	margin-top: 20px;
+}
+
+#reply2{
+	color : #0000FF;
+}
+
+#reContent{
+	margin-left: 50px;
+	margin-top: 5px;
+}
+
+#reContent2{
+	margin-left: 50px;
+	margin-top: 5px;
+}
+
+.SVbtn{
+	margin-top: -28px;
+	margin-left: 500px;
+    float: left;
+	
+}
+
+.SVbtn2{
+	margin-top: -28px;
+	margin-left: 650px;
+	padding-left: 10px;
+}
+
+.comment_edit_save, .comment_edit_cancel{
+	color: #ffffff;
+	background-color : #000000;
+}
+
+.comment_edit_save:hover, .comment_edit_cancel:hover{
+	box-shadow : 3px 3px 3px #c0c0c0;
+	transition-duration: 0.3s;
+}

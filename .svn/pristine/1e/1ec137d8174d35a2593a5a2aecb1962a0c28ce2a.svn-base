@@ -1,0 +1,91 @@
+function myRouteDelete(subject) {
+	if(!confirm("삭제하시겠습니까?")){return;}
+	location.href="myRouteDelete?subject=" + subject;
+}
+function save() {
+	var preSubject =  document.getElementById('preSubject').value;
+	var subject =  document.getElementById('subject').value;
+	var memo =  document.getElementById('memo').value;
+	var form = document.getElementById('routeSubjectUpdate');
+	if(subject == null || subject == ""){
+		alert('여행 타이틀을 입력해주세요.'); return false;
+	}
+	form.submit();
+	
+}
+
+//일정 불러오기
+function myRouteMap(id,subject) {
+   console.log(id);
+   console.log(subject);
+   xmlReq = new XMLHttpRequest();
+   xmlReq.onreadystatechange = getCalendarResult;
+   xmlReq.open("POST", "myRouteMap");
+   xmlReq.send(id);
+   xmlReq.send(subject);
+}
+
+// ------------------------- kakaoMap ------------------------- //
+var markerArr = [],
+	linePath = [];
+//
+var container = document.getElementById('map');
+var options = {
+	center: new kakao.maps.LatLng(
+		document.getElementById(0 + "_mapY").value,
+		document.getElementById(0 + "_mapX").value
+	),
+	level: 7
+};
+//
+var map = new kakao.maps.Map(container, options);
+//
+//polyline = new kakao.maps.Polyline({
+//   map: map,
+//   path: linePath,
+//   strokeWeight: 7,
+//   strokeColor: '#7401DF',
+//   strokeOpacity: 1,
+//   strokeStyle: 'dashed',
+//   strokeLineCap: 'round'
+//});
+//
+//for (var cnt = 0; cnt < 5; cnt++) {
+//	console.log("zzzz")
+//}
+//
+////    
+var index = document.getElementById("idx").value;
+for (var i = 0; i < index; i++) {
+	var mapX = document.getElementById(i + "_mapX").value;
+		mapY = document.getElementById(i + "_mapY").value;
+
+	// 마커 이미지의 이미지 크기 입니다
+	var imageSize = new kakao.maps.Size(64, 64);
+	var imageSrc = "/image/Marker_numbering/Marker-" + (i + 1)  + ".png";
+
+	// 마커 이미지를 생성합니다    
+	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+		map: map, // 마커를 표시할 지도
+		position: new kakao.maps.LatLng(
+			document.getElementById(i + "_mapY").value,
+			document.getElementById(i + "_mapX").value
+		), // 마커를 표시할 위치
+        title : document.getElementById(i + "_title"), // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지 
+	});
+	linePath.push(new kakao.maps.LatLng(mapY, mapX));
+}
+
+polyline = new kakao.maps.Polyline({
+   map: map,
+   path: linePath,
+   strokeWeight: 7,
+   strokeColor: 'yellow',
+   strokeOpacity: 1,
+   strokeStyle: 'dashed',
+   strokeLineCap: 'round'
+});

@@ -1,0 +1,93 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:if test="${empty sessionScope.id }">
+	<script>
+		location.href="main";
+	</script>
+</c:if>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/css/member/myRouteDetail.css">
+<meta charset="UTF-8">
+<title>대한민국 방방곡곡</title>
+</head>
+<body>
+	<%@ include file="../member/aside.jsp"%>
+	<div class="wrap">
+		<!-- 마이페이지 제목 -->
+		<div class="title">
+			<img src="image/my_icon_01.png"> <span>마이페이지</span>
+
+		</div>
+		<div class="subTitle">
+			<span>나의 일정 상세</span>
+		</div>
+		<!-- 끝 -->
+		<div class="routeImg">
+			<img src="image/route.gif" class="gif">
+		</div>
+		<div class="content">
+		<input type="hidden" id = "id" name="id" value="${sessionScope.id }" />
+			<hr>
+			<c:choose>
+			<c:when test="${empty myRouteDetail}">
+			<div class="routeNon1">
+<!-- 				<div class="routeNon2"> -->
+<!-- 					<input type="button" value="일정만들기" class="RouteBtn" onclick="location.href='route'"> -->
+<!-- 				</div> -->
+				<div class="routeNon2">
+					<span style="font-size: 40px;">나의 일정이 없습니다.</span>
+				</div>
+			</div>
+			</c:when>
+			<c:otherwise>
+			<div class="routeDiv">
+			<input type="button" value="일정수정하기" class="RouteBtn" onclick="location.href='route'">
+			<input type="button" value="일정전체삭제" class="RouteBtn" onclick="myRouteDelete()">
+			</div>
+			<div class="subject">
+			<c:forEach var="mysubject" items="${myRouteDetail}" begin="0" end="0" >
+				<input type="text" id="subject" name="subject" value="${fn:escapeXml(mysubject.subject) }">
+			</c:forEach>
+			</div>
+			</c:otherwise>
+			</c:choose>
+			<div>
+			</div>
+			<c:forEach var="myRoute" items="${myRouteDetail}" >
+				<div class="myRoute">
+					<c:set var ="i" value="${i+1 }"/>
+				<div class="myRouteNum">
+					<span>${i }</span>
+				</div>
+				<div class="routeImg">
+					<img class="img" src="<c:out value="${myRoute.firstImage2}"/>">
+				</div>
+				<div class="routeInfo">
+				<div class="routeTitle">
+					<c:out value="${myRoute.title}"/>
+				</div>
+				<div class="routeAddress">
+					 <c:out value="${myRoute.addr1}"/>
+				  <c:out value="${myRoute.addr2}"/>
+				</div>
+				</div>
+			</div>
+			<hr style="margin: 40px 0 -40px 200px">
+			</c:forEach>
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+function myRouteDelete(id) {
+	if(!confirm("삭제하시겠습니까?")){return;}
+	var id = document.getElementById("id").value;
+	location.href="myRouteDelete?id="+id;
+	
+}
+</script>
+</html>

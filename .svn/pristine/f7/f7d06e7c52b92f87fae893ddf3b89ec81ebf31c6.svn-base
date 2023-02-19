@@ -1,0 +1,15 @@
+package com.care.KorTravel.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.care.KorTravel.dto.FacilityDTO;
+
+public interface IRouteService {
+
+	public ArrayList<FacilityDTO> getSearchResult(String searchText);
+	public ArrayList<FacilityDTO> getRecommendFacilities();
+	public void saveCalendar(ArrayList<FacilityDTO> saveCalendar);
+	public ArrayList<FacilityDTO> getCalendar();
+	public String getSpecPlace(HashMap<String, String> datas);
+}

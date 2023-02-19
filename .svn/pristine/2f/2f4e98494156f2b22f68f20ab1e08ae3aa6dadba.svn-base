@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.communityDetailWrapper {
+	display : flex;
+	width : 65%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 2px 2px 0 2px;
+	flex-direction : column;
+	border-radius : 5px;
+}
+
+.communityUpdateArea {
+	table-layout : fixed;
+	width : 97%;
+	height : 90%;
+	margin : auto;
+	padding-top : 20px;
+}
+
+.communityContent { resize : none; }
+
+.communityDetailTable td { padding-left : 10px; }
+
+.media { display : block; }
+
+.communityContent .media, .communityContent .image { display : block; }
+
+.communityContent {
+	overflow : auto;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	max-width : 1000px;
+	max-height : 600px;
+}
+
+figure { display : block !important; }
+
+.titleText, .writeDateText1, .writeDateText2, .contentText {
+	text-align : center;
+	line-height : 42px;
+}

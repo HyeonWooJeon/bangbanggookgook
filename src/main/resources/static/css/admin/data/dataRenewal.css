@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.dataRenewalWrapper {
+	width : 28%;
+	max-height : 930px;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 10px 10px 15px 10px;
+	border-radius : 5px;
+}
+
+.btnArea1 {
+	display : flex;
+	flex-direction : column;
+}
+
+.btn-secondary-shapeFix {
+	height : 60px;
+	font-size : 19px !important;
+	box-shadow : 3px 5px 5px darkgray;
+/* 	font-weight : bold !important; */
+}	
+
+
+label {
+	size : 17px;
+	font-weight : bold;
+}
+
+/* .modal-overlayWrapper { */
+/* 	display: none; */
+/* 	position : relative; */
+/* 	background : red; */
+/* 	top : 0; */
+/* 	left : 0; */
+/* 	width : 1920px; */
+/* 	height : 1920px; */
+/* 	z-index : 999; */
+/* 	background: rgba(255, 255, 255, 0.25); */
+/* 	backdrop-filter: blur(1.5px); */
+/* } */
+
+.modal-overlayWrapper {
+	display : none;
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	z-index : 999;
+	background : rgba(255, 255, 255, 0.25);
+/* 	background : red !important; */
+}
+
+.modal-overlay {
+	background : white;
+	width : 28%;
+	height : 50px;
+	margin-left : 44.4%;
+	margin-top : 10%;
+	text-align : center;
+	box-shadow : 8px 8px 8px black;
+	border-radius : 5px;
+}
+
+.result {
+	font-weight : 800;
+	line-height : 45px;
+}

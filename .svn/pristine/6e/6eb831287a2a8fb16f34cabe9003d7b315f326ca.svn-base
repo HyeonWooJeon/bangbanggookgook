@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+/* noticeDetail */
+.noticeDetailWrapper {
+	display : flex;
+	width : 65%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 2px 2px 0 2px;
+	flex-direction : column;
+	border-radius : 5px;
+}
+
+.noticeUpdateArea {
+	table-layout : fixed;
+	width : 97%;
+	height : 90%;
+	margin : auto;
+	padding-top : 20px;
+}
+
+.noticeContent {
+	resize : none;
+}
+
+.noticeDetailTable {
+	margin : auto;
+	width : 70%;
+	height : 90%;
+}
+
+.noticeDetailTable td {
+	padding-left : 10px;
+}
+
+.noticeTitle, .noticeWriteDate1, .noticeWriteDate2, .fileText {
+	text-align : center;
+	line-height : 40px;
+}
+
+.fileDownload {
+	line-height : 40px;
+}
+
+.contentText {
+	text-align : center;
+	line-height : 500px;
+}

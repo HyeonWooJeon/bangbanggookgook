@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.care.KorTravel.dao.ConceptDAO">
+	<select id ="selectRandom" parameterType="String" resultType="FacilityDTO">
+		<choose>
+			<when test="cat1==null">
+			SELECT contentId, title, firstImage FROM facilities WHERE recommend = 'y' ORDER BY RAND() LIMIT 30;			
+			</when>
+			<otherwise>
+			SELECT contentId, title, firstImage FROM facilities WHERE recommend = 'y' AND cat1=#{cat1} ORDER BY RAND() LIMIT 30;						
+			</otherwise>
+		</choose>
+    </select>
+    
+    
+    
+    <select id="selectFood"  resultType="FacilityDTO">
+        SELECT * 
+               FROM facilities WHERE cat1 = A05
+        </select>
+        <select id="selectTour" resultType="FacilityDTO">
+            SELECT * FROM facilities WHERE cat1 = A02
+            </select>
+            <select id="selectRest"  resultType="FacilityDTO">
+                SELECT * FROM facilities WHERE cat1 = B02
+                </select>
+                    <select id="selectDetail"  parameterType="String" resultType="FacilityDTO">
+                        SELECT * FROM facilities WHERE contentId = #{contentId}
+                    </select>
+                <select id="selectRecom"  resultType="FacilityDTO">
+                    SELECT * FROM facilities WHERE recommend = y
+                    </select>
+                    <select id="selectRecomFood"  resultType="FacilityDTO">
+        SELECT * FROM facilities WHERE cat1 = A05 AND recommend = y
+        </select>
+        <select id="selectRecomTour"  resultType="FacilityDTO">
+        SELECT * FROM facilities WHERE cat1 = A02 AND recommend = y
+        </select>
+        <select id="selectRecomRest"  resultType="FacilityDTO">
+        SELECT * FROM facilities WHERE cat1 = B02 AND recommend = y
+        </select>
+<!--                     <select> -->
+<!--                         SELECt * FROM facilities WHERE contantId = #{code} -->
+<!--                         </select> -->
+    </mapper>

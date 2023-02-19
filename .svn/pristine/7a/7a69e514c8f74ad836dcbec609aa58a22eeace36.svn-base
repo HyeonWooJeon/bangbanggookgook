@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.KorTravel.dao.CommunityDAO">
+
+	<select id="communityProc"  resultType="CommunityDTO">
+		<choose>
+			<when test="search == null or search == ''">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}
+			</when>
+			<when test="select=='id'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE id LIKE CONCAT('%',#{search},'%')
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+			<when test="select=='title'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE title LIKE CONCAT('%',#{search},'%')
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+			<when test="select=='content'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE content LIKE CONCAT('%',#{search},'%')
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+			<when test="select=='all'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE id LIKE CONCAT('%',#{search},'%') or
+							 title LIKE CONCAT('%',#{search},'%') or
+							 num LIKE CONCAT('%',#{search},'%') or
+							 content LIKE CONCAT('%',#{search},'%')
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+			<when test="select=='num'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE num LIKE CONCAT('%',#{search},'%')
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+		</choose>
+	</select>
+
+	<select id="communityCount" resultType="String" parameterType="HashMap">
+		<choose>
+			<when test = "search == null or search == ''">
+				SELECT MAX(ROWNUM()) FROM community
+			</when>
+			<when test = "select=='id'">
+				SELECT MAX(ROWNUM()) FROM community WHERE id LIKE CONCAT('%',#{search},'%')
+			</when>
+			<when test = "select=='title'">
+				SELECT MAX(ROWNUM()) FROM community WHERE title LIKE CONCAT('%',#{search},'%')
+			</when>
+			<when test = "select=='num'">
+				SELECT MAX(ROWNUM()) FROM community WHERE num LIKE CONCAT('%',#{search},'%')
+			</when>
+			<when test = "select=='content'">
+				SELECT MAX(ROWNUM()) FROM community WHERE content LIKE CONCAT('%',#{search},'%')
+			</when>
+			<otherwise>
+				SELECT MAX(ROWNUM()) FROM community WHERE title LIKE CONCAT('%',#{search},'%')
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="communityDetail" resultType="CommunityDTO">
+		SELECT * FROM community WHERE num =#{num}
+	</select>
+	
+	<update id="hitIncrease" parameterType="int" >
+		UPDATE community SET hit=hit+1 WHERE num=#{num}
+	</update>
+	
+	<select id="movePage" parameterType="int" resultType="CommunityDTO">
+		select A.* from(SELECT 
+			num,
+	         LEAD(num,1) OVER(ORDER BY num) AS next,
+	         LAG(num,1) OVER(ORDER BY num) AS last,
+	         title,
+	         LEAD(title,1) OVER(ORDER BY num) AS nexttitle,
+	         LAG(title,1) OVER(ORDER BY num) AS lasttitle
+			FROM community
+	        order by num DESC)A
+	        WHERE num = #{num1}
+	</select>
+	
+	<insert id="community_write" parameterType="CommunityDTO">
+		INSERT INTO community (id,title,content,writeDate,hit,fileName) VALUES (#{id},#{title},#{content},#{writeDate},0,#{fileName})
+	</insert>
+
+	
+	<select id="getComment" parameterType="int" resultType="commun_commentDTO">
+		SELECT * FROM community_comment JOIN member ON community_comment.reWriter = member.id WHERE community_comment.writeNo=#{writeNo} ORDER BY REORDER ASC
+	</select>
+	
+	<select id="countComment" parameterType="int" resultType="int">
+		SELECT count(*) FROM community_comment WHERE writeNo=#{num} and deleted='N'
+	</select>
+	
+	<insert id="insertReply" parameterType="Commun_commentDTO">
+       
+	    INSERT INTO community_comment (writeNo, reWriter, deleted, reContent, reDate,REPARENT,REDEPTH) VALUES (#{writeNo}, #{reWriter}, 'N', #{reContent}, #{reDate},
+	    <choose>
+	    	<when test="reparent==null">'없음', 0</when>
+	    	<otherwise>#{reparent}, #{redepth}</otherwise>
+	    </choose>
+	    )
+	</insert>
+	
+	<update id="updateReply" parameterType="Commun_commentDTO">
+    	UPDATE community_comment SET reContent=#{reContent} WHERE replyNo=#{replyNo}
+	</update>
+
+<!-- 	paging 다시 한번 해볼것! -->
+	<select id="myLog" resultType="CommunityDTO">
+	/* community : 커뮤니티 테이블 조회 */
+	SELECT B.* FROM(
+	<!-- 이 주석은 사용하지 말것 -->
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM community
+							WHERE id =#{id}
+						 ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}
+	</select>
+	<select id="myLogCount" resultType="String" parameterType="String">
+		SELECT MAX(ROWNUM()) FROM community WHERE id=#{id}
+	</select>
+
+	<update id="ReplyDelete" parameterType="String">
+		UPDATE community_comment SET deleted='Y' WHERE replyNo=#{replyNo}
+	</update>
+	
+	<select id="selectReplyParent" resultType="Commun_commentDTO" parameterType="String">
+		SELECT writeNo, REDEPTH+1 REDEPTH, REORDER FROM community_comment WHERE replyNo=#{reparent}
+	</select>
+    
+    <select id="edit" parameterType="String" resultType="CommunityDTO">
+    	SELECT * FROM community WHERE num=#{num}
+    </select>
+    
+    <update id="community_edit" parameterType="CommunityDTO">
+    	UPDATE community SET title=#{title}, content=#{content}, fileName=#{fileName} WHERE num=#{num}
+    </update>
+    
+    <delete id="my_write_delete" parameterType="int">
+    	DELETE FROM community WHERE num=#{num}
+    </delete>
+    
+    <update id="commentCount" parameterType="Commun_commentDTO">
+    	UPDATE community b
+    		set b.commentCount=(SELECT count(writeNo) FROM community_comment WHERE writeNo=#{writeNo} and deleted='N')
+    	WHERE b.num=#{writeNo}
+    </update>
+    
+    <update id="commentCountDelete" parameterType="String">
+    	UPDATE community b
+    		set b.commentCount=(SELECT count(writeNo) FROM community_comment WHERE writeNo=#{writeNo} and deleted='N')
+    	WHERE b.num=#{writeNo}
+    </update>
+    
+    <select id="last_insert_num" resultType="String">
+    	SELECT LAST_INSERT_ID() 
+    </select>
+    
+    <update id="insertReorder" parameterType="String">
+    	UPDATE community_comment set reorder=#{reorder} WHERE replyNo=#{reorder}
+    </update>
+    
+    <update id="insertReorder2" parameterType="String">
+    	UPDATE community_comment set reorder=#{string} WHERE replyNo=#{reorder2}
+    </update>
+    
+    <select id="getCommentAll" parameterType="String" resultType="Commun_commentDTO">
+    	SELECT * FROM community_comment WHERE replyNo =#{replyNo}
+    </select>
+
+
+</mapper>

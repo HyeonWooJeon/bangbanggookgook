@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.inquiryAnswerWrapper {
+	display : flex;
+	width : 65%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	flex-direction : column;
+}
+
+/* notice Write */
+.inquiryAnswerArea {
+	table-layout : fixed;
+	width : 97%;
+	height : 90%;
+	margin : auto;
+	margin-top : 24px;
+	padding-top : 20px;
+}
+
+.inquiryContent {
+	resize : none;
+}
+
+.table-shapeFix {
+	margin-top : -25px;
+}

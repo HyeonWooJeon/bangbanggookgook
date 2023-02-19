@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.care.KorTravel.adminDAO.CommunityManageDAO">
+	<insert id = "regist" parameterType = "CommunityDTO">
+		INSERT INTO community VALUES ( LASTVAL(num) + 1, #{ id }, #{ title }, #{ content }, #{ fileName }, #{ writeDate }, 0 )
+	</insert>
+	
+	<select id = "getList" resultType = "CommunityDTO">
+		<choose>
+			<when test = "options == '작성자'">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM community WHERE id LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC
+			</when>
+			
+			<when test = "options == '제목'">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM community WHERE title LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC
+			</when>
+			
+			<when test = "options == '내용'">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM community WHERE content LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC
+			</when>
+			
+			<otherwise>
+				SELECT * FROM ( SELECT * FROM (SELECT *, ROWNUM()rn FROM community)B WHERE B.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } )A ORDER BY A.num DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id = "getDataCount" resultType = "Integer">
+		<choose>
+			<when test = "options == '작성자'">
+				SELECT MAX(ROWNUM()) FROM community WHERE id LIKE CONCAT('%', #{ searchText }, '%')
+			</when>
+			
+			<when test = "options == '제목'">
+				SELECT MAX(ROWNUM()) FROM community WHERE title LIKE CONCAT('%', #{ searchText }, '%')
+			</when>
+			<when test = "options == '내용'">
+				SELECT MAX(ROWNUM()) FROM community WHERE content LIKE CONCAT('%', #{ searchText }, '%')
+			</when>
+			<otherwise>
+				SELECT MAX(ROWNUM()) FROM community
+			</otherwise>
+		</choose>		
+	</select>
+	
+	<delete id = "delete">
+		DELETE FROM community WHERE num = #{ num }
+	</delete>
+	
+	<select id = "getCommunityContent" resultType = "CommunityDTO">
+		SELECT * FROM community WHERE num = #{ num }
+	</select>
+	
+	<update id = "update">
+	
+	</update>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.care.KorTravel.adminDAO.DataManageDAO">
+	<select id = "createContentId" resultType = "String">
+		SELECT MAX(contentId) + 1 FROM facilities
+	</select>
+	
+	<insert id = "registFacility" parameterType = "com.care.KorTravel.dto.FacilityDTO">
+		INSERT INTO facilities VALUES ( 
+			#{ addr1 }, #{ addr2 }, #{ areaCode },
+			#{ cat1 }, #{ cat2 }, "",
+			#{ contentId }, #{ firstImage }, #{ firstImage2 },
+			#{ mapX }, #{ mapY }, "", "", 
+			#{ tel }, #{ title }, #{ zipcode }, 
+			#{ overview }, #{ recommend }
+		)
+	</insert>
+</mapper>

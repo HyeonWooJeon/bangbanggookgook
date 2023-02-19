@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.memberDetailWrapper {
+	display : flex;
+	width : 35%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 10px 10px 0 10px;
+	flex-direction : column;
+	border-radius : 5px;
+}
+
+table {
+}
+
+th {
+	width : 20%;
+	text-align : center !important;
+	line-height : 1opx;
+}
+
+td {
+	width : 40%;
+	padding-left : 50px !important;
+}
+
+input {
+	text-align : center;
+}
+
+.form-control-shapeFix {
+	width : 250px !important;
+}
+
+.unvisible {
+	display : none !important;
+}
+
+.visible {
+	display : block;
+}
+
+.postCode-shapeFix {
+	width : 200px !important;
+	float : left;
+}
+
+.postCodeOpenBtn {
+	margin-left : 10px;
+}

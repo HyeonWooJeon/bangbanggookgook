@@ -1,0 +1,88 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.title{
+	margin-top:5%;
+	height:30px;
+}
+.title img{
+	 width: 30px;
+  height: 30px;
+}
+.title span{
+	font-size: 20px;
+	color: #747474;
+}
+.subTitle span{
+	font-size:40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.routoImg{
+  display:flex;
+}
+
+.gif {
+      position: static;
+    height: 300px;
+    width: 700px;
+    margin-left: 300px;
+}
+.content{
+	margin-top: 20px;
+}
+
+.content hr{
+	    margin-left: 200px;
+	width: 900px;
+}
+.RouteBtn{
+	cursor: pointer;
+    background-color: #fff;
+    width: 110px;
+    height:40px;
+    border: 1px solid black;
+    font-size: 15px;
+}
+.RouteBtn:hover{
+		cursor: pointer;
+    font-size: 15px;
+    background-color: black;
+    width: 110px;
+    height:40px;
+    color:#fff;
+    border: 1px solid #fff;
+}
+
+.img{
+	width: 250px;
+    height: 200px;
+    border:1px solid black;
+}
+.routeDiv{
+	float: right;
+	margin: 20px 400px 20px 0;
+}
+.myRoute{
+	margin: 80px 0 0 20%;
+}
+.routeInfo {
+	float: right;
+	    margin: -170px 550px 0 0px;
+	    width:300px;
+}
+.routeTitle{
+	font-size:25px;
+	margin-bottom: 20px;
+}
+.routeNon2{
+    margin: 100px 0 100px 450px;
+}

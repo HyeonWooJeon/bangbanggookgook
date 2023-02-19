@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.care.KorTravel.dao.RouteDAO">
+	<select id = "getFood" resultType = "RouteDTO">
+		SELECT mapX, mapY FROM facilities WHERE cat1 = 'A05'
+	</select>
+	
+	<select id = "getSearchResult" parameterType = "String" resultType = "FacilityDTO">
+		SELECT * 
+		FROM facilities 
+		WHERE title LIKE CONCAT('%', #{ searchText }, '%') OR
+					addr1 LIKE CONCAT('%', #{ searchText }, '%') OR
+					addr2 LIKE CONCAT('%', #{ searchText }, '%')
+	</select>
+	
+	<select id = "getRecommendFacilities" resultType = 'FacilityDTO'>
+		SELECT 
+			*
+		FROM
+			facilities
+		WHERE
+			recommend = 'y';
+	</select>
+	
+	<delete id = "deleteCalendar">
+		DELETE FROM calendar WHERE id = #{ id }
+	</delete>
+	
+	<select id = "getMyRouteDetail" parameterType = "String" resultType = "CalendarDTO">
+      SELECT * FROM calendar WHERE id = #{ id }
+    </select>
+	
+	<select id = "subjectDuplicateCheck" resultType = "Integer">
+		SELECT count(subject)
+		FROM calendar
+		WHERE subject = #{ subject }
+	</select>
+	
+	
+	<insert id = "saveCalendar" parameterType = "com.care.KorTravel.dto.CalendarDTO">
+		INSERT INTO calendar (
+			id, 		
+			firstImage2,
+			title, 		
+			addr1, 		
+			addr2,
+			mapX,
+			mapY,
+			contentId,
+			subject
+		)
+		VALUES
+		<foreach collection = "saveCalendar" item = "saveCalendar" separator = ",">
+		(
+			#{ id },
+			#{ saveCalendar.firstImage2 },
+			#{ saveCalendar.title }, 
+			#{ saveCalendar.addr1 },
+			#{ saveCalendar.addr2 },
+			#{ saveCalendar.mapX },
+			#{ saveCalendar.mapY },
+			#{ saveCalendar.contentId },
+			#{ saveCalendar.subject }
+		)
+		</foreach>
+	</insert>
+	
+	<select id = "getCalendar" parameterType = "String" resultType = "FacilityDTO">
+		SELECT * FROM calendar WHERE id = #{ id }
+	</select>
+	
+	<select id = "getSpecPlace" resultType = "FacilityDTO">
+		<!-- X 는 경도(lng), Y 는 위도(lat) -->
+		SELECT * 
+		FROM facilities 
+		WHERE mapX BETWEEN #{ swLng } AND #{ neLng }
+		AND   mapY BETWEEN #{ swLat } AND #{ neLat }
+		AND	  cat1 = #{ cat }
+	</select>
+</mapper>

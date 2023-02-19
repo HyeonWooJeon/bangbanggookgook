@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.KorTravel.dao.inquiryDAO">
+	<select id="inquiryList" parameterType="String"	resultType="InquiryDTO">
+		SELECT * FROM inquiry WHERE id=#{id}
+	</select>
+	
+	<select id="inquiryDetail" resultType="InquiryDTO">
+        SELECT * FROM inquiry WHERE num = #{num}
+    </select>
+  <insert id="inquiryWrite" parameterType="InquiryDTO">
+        INSERT INTO
+        inquiry (id,type,title,inquiryContent ,inquiryDate )
+        VALUES(#{id},#{type},#{title},#{inquiryContent},#{inquiryDate}) 
+    </insert>
+   
+<select id="inquiryProc"  resultType="InquiryDTO">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM inquiry WHERE id=#{id} ORDER BY num DESC 
+					)A
+				)B WHERE rn BETWEEN #{begin} and #{end}
+</select>
+	
+	<select id="inquiryCount" resultType="String" parameterType="String">
+				SELECT MAX(ROWNUM()) FROM inquiry WHERE id=#{id}
+	</select>
+	<select id="inquiryEdit">
+		SELECT * FROM inquiry WHERE num=#{num}
+	</select>
+	<update id="inquiryModifyProc" parameterType="InquiryDTO" >
+		UPDATE inquiry SET title=#{title},type =#{type}, inquiryContent=#{inquiryContent} WHERE num =#{num}
+	</update>
+	<delete id="inquiryDeleteProc" parameterType="int">
+		DELETE FROM inquiry WHERE num =#{num }
+	</delete>	
+    
+    
+</mapper>

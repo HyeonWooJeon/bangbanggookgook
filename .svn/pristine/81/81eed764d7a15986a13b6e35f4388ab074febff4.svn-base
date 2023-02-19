@@ -1,0 +1,33 @@
+
+package com.care.KorTravel.service;
+
+import org.springframework.ui.Model;
+
+import com.care.KorTravel.dto.MemberDTO;
+
+public interface IMemberService {
+	public MemberDTO userInfo(String id);
+
+	public int login(MemberDTO id);
+	
+	public String member_register(MemberDTO member);
+	
+	public String loginCheck(MemberDTO member);
+	
+	public int edit_Pw(MemberDTO member);
+	
+	public void imgUpdate(String id, String profilePhoto);
+	public void saveProfile(MemberDTO user);
+	
+	public String userUpdate(MemberDTO user);
+	
+	public boolean userDelete(MemberDTO check);
+	
+	public String[] lastAccess(String ip, String code, String country);
+	public void getLogin(Model model,String id);
+	public void myRouteDelete(String id);
+
+	public boolean userUpdateCheck(MemberDTO check);
+	
+	public String getIPProc(String id);
+}

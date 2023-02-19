@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.KorTravel.dao.MainDAO">
+
+	<select id="recommendSights" resultType="DBDTO">
+		SELECT contentId, title, firstImage FROM facilities WHERE cat1='A02' ORDER BY RAND() LIMIT 3;
+	</select>
+	
+	<select id="recommendFood" resultType="DBDTO">
+		SELECT contentId, title, firstImage FROM facilities WHERE cat1='A05' ORDER BY RAND() LIMIT 3;
+	</select>
+	
+	<select id="getNotice" resultType="NoticeDTO">
+		SELECT * FROM notice ORDER BY num DESC LIMIT 0, 8
+	</select>
+
+</mapper>

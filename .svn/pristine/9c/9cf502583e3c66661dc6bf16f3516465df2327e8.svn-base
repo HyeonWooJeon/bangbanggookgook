@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.care.KorTravel.dao.SearchDAO">
+
+	<select id="getData" parameterType="String" resultType="DBDTO">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT title, contentId FROM facilities
+							WHERE title LIKE CONCAT('%',#{search},'%')
+						 ORDER BY RAND() DESC 
+					)A
+				)B WHERE rn BETWEEN '0' and '6'	;		
+	</select>
+	
+	<select id="searchCount" resultType="String" parameterType="HashMap">
+		<choose>
+			<when test="select == 'A02'">
+				SELECT MAX(ROWNUM()) FROM(SELECT * FROM facilities WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%'))A WHERE cat1 =#{select}
+			</when>
+			<when test="select == 'A05'">
+				SELECT MAX(ROWNUM()) FROM(SELECT * FROM facilities WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%'))A WHERE cat1 =#{select}
+			</when>
+			<when test="select == 'B02'">
+				SELECT MAX(ROWNUM()) FROM(SELECT * FROM facilities WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%'))A WHERE cat1 =#{select}
+			</when>
+		</choose>
+	</select>
+	
+	<select id="searchProc"  resultType="DBDTO">
+		<choose>
+			<when test="select == 'A02'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM facilities
+							WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%') 
+					)A WHERE cat1 =#{select}
+				)B WHERE rn BETWEEN #{begin} and #{end}
+			</when>
+			<when test="select=='A05'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM facilities
+							WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%') 
+					)A WHERE cat1 =#{select}
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+			<when test="select=='B02'">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM facilities
+							WHERE title LIKE CONCAT('%',#{title},'%') or addr1 LIKE CONCAT('%',#{title},'%') 
+					)A WHERE cat1 =#{select}
+				)B WHERE rn BETWEEN #{begin} and #{end}				
+			</when>
+		</choose>
+	</select>
+	
+	<select id="getAreaData" parameterType="String" resultType="DBDTO">
+		SELECT * FROM facilities WHERE areaCode=#{obj}
+	</select>
+	
+	<select id="searchAreaCount" resultType="String" parameterType="HashMap">
+		SELECT MAX(ROWNUM()) FROM(SELECT * FROM facilities WHERE areaCOde = #{areaCode})A WHERE cat1 =#{select}
+	</select>
+
+	<select id="searchAreaProc"  resultType="DBDTO">
+				SELECT B.* FROM(
+					SELECT  A.*, ROWNUM() as rn FROM(
+						SELECT * FROM facilities
+							WHERE areaCode = #{areaCode}
+					)A WHERE cat1 =#{select}
+				)B WHERE rn BETWEEN #{begin} and #{end}
+	</select>
+	
+
+
+</mapper>

@@ -1,0 +1,16 @@
+$(function() {
+	// 목록 클릭시
+	$("#inquiryList").on("click", function() {
+		location.href = "/admin/inquiryManage";
+	});
+	
+	$("#answer").on("click", function() {
+		location.href = "/admin/inquiryAnswer?num=" + document.getElementById("num").value;
+	});
+});
+
+function inquiryDelete(num) {
+	if (confirm("삭제하시겠습니까?")) {
+		location.href = "/admin/inquiryDelete?num=" + num;
+	}
+}

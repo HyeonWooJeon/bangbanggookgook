@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+.facilityDetailWrapper {
+	display : flex;
+	width : 80%;
+	height : 800px;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 10px 10px 0 10px;
+	overflow : hidden;
+}
+
+.map {
+	width : 62%; height : 98%;
+	position : relative; left : 2%;
+	box-shadow: 0 0 5px 2px gray;
+	z-index : 999;
+}
+
+.facilityDetailData {
+	width : 35%;
+	overflow : revert;
+	box-shadow: 0 0 5px 2px gray;
+	border-radius : 7px;
+	margin-left : 5px;
+	margin-bottom : 15px;
+
+}
+
+.facilityDataInputArea {
+	width : 90%;
+	margin : 5px auto 5px auto;
+}
+
+.addressLabel {
+	display : block;
+}
+
+.addressInput {
+	display : inline-block;
+	width : 65%;
+}
+
+.addressSearchBtn {
+	margin-bottom : 5px;
+	margin-left : 12px;
+	width : 31%;
+}
+
+.address {
+	margin : 8px 0;
+}
+
+.facilityCat1, .facilityCat2 {
+	width : 44%;
+	height : 35px;
+	text-align : center;
+	border-radius : 1px solid gray;
+}
+
+.facilityCat2 {
+	display : none;
+}
+
+.bi-fast-forward-margin {
+	margin : 0 15px;
+}
+
+.btn-secondary-shapeFix-next {
+	width : 200px;
+	height : 48px;
+	margin-top : 3%;
+}
+
+.btn-secondary-shapeFix-prev {
+	width : 200px;
+	height : 48px;
+	margin-top : 3%;
+}
+
+.btn-danger-shapeFix {
+	width : 200px;
+	height : 48px;
+	margin-top : 3%;
+}
+
+@keyframes slide-1 {
+	0% { position : relative; right : 0px;  }
+	100% { position : relative; right : 565px; }
+}
+
+@keyframes slide-2 {
+	0% { right : 450px; }
+	100% { right : 1015px; }
+}
+
+.slide-event-1 {
+	animation-name : slide-1;
+	animation-duration : 1s;
+	animation-fill-mode: forwards;
+}
+
+.slide-event-2 {
+	animation-name : slide-2;
+	animation-duration : 1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes slide-3 {
+	0% { position : relative; right : 565px;  }
+	100% { position : relative; right : 0%; }
+}
+
+@keyframes slide-4 {
+	0% { right : 1015px; }
+	100% { right : 450px; }
+}
+
+.slide-event-3 {
+	animation-name : slide-3;
+	animation-duration : 1s;
+	animation-fill-mode: forwards;
+}
+
+.slide-event-4 {
+	animation-name : slide-4;
+	animation-duration : 1s;
+	animation-fill-mode: forwards;
+}
+
+.overviewArea {
+	position : absolute;
+	top : 90px;
+	right : 450px;
+	background : white;
+	height : 760px;
+	width : 530px;
+}
+
+.form-control-resizable {
+	resize : none;
+}
+
+.display-none {
+	display : none;
+}
+
+.btn-secondary-shapeFix {
+	width : 170px;
+}

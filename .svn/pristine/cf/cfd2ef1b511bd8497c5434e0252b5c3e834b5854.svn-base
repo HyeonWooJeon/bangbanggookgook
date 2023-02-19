@@ -1,0 +1,50 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.title{
+	margin-top:5%;
+	height:30px;
+}
+.title img{
+	 width: 30px;
+  height: 30px;
+}
+.title span{
+	font-size: 20px;
+	color: #747474;
+}
+.subTitle span{
+	font-size:40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.tableWrap{
+	height:450px;
+}
+.myLogTable{
+	text-align : center;
+	    width: 1000px;
+    margin-left: 3% 0 0 5%;
+}
+.paging{
+	margin:2% 0 0 35%;
+}
+.myLogTable thead th{
+    border-bottom: 2px solid black;
+}
+/* .myLogTable tbody th{ */
+/*    height:10px; */
+/* } */
+.paging a{
+	text-decoration : none;
+	color : black;
+}
+

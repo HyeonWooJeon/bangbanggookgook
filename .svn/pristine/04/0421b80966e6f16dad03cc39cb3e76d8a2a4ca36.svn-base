@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.facilityWrapper {
+	display : flex;
+	width : 65%;
+	max-height : 930px;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 10px 10px 15px 10px;
+	flex-direction : column;
+	border-radius : 5px;
+}
+
+.topArea {
+	width : 100%;
+	height : 70px;
+	background : #dee2e6;
+	padding-left : 15%;
+	padding-top : 15px;
+}
+
+.searchArea {
+	display : inline-block;
+	margin : 0 5px;
+}
+
+.form-control-shapeFix {
+	width : 600px !important;
+	height : 30px !important;
+	margin : 0 5px;
+}
+
+.facility_notice {
+	display : block;
+}
+
+.btn-shapeFix {
+	width : 80px;
+}
+
+.pagination {
+	width : 50% !important;
+/* 	margin-top : 7px; */
+	margin : auto; 
+}
+
+.page-link {
+	color : darkslategray !important;
+}
+
+.form-select-shapeFix {
+	width : 100px;
+}
+
+.paginationArea {
+	width : 20.5%;
+	height : inherit;
+	margin : auto;
+}
+
+tr, td {
+	text-align : center;
+	line-height : 20px;
+}
+
+.facilityTitle, .facilityAddr {
+	overflow : hidden;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	max-width : 150px;
+}
+
+.contentArea {
+	max-height : 100px;
+}
+
+.facilityTitle {
+	cursor : pointer;
+}

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.care.KorTravel.dao.RouteDAO">
+	<select id="getFood" resultType="RouteDTO">
+		SELECT mapX, mapY FROM
+		facilities WHERE cat1 = 'A05'
+	</select>
+
+	<select id="getSearchResult" parameterType="String"
+		resultType="FacilityDTO">
+		SELECT *
+		FROM facilities
+		WHERE title LIKE CONCAT('%', #{ searchText }, '%') OR
+		addr1 LIKE CONCAT('%', #{ searchText }, '%') OR
+		addr2 LIKE CONCAT('%', #{ searchText }, '%')
+	</select>
+
+	<select id="getRecommendFacilities" resultType='FacilityDTO'>
+		SELECT
+		*
+		FROM
+		facilities
+		WHERE
+		recommend = 'y';
+	</select>
+
+	<select id="getMyRouteDetail" parameterType="String"
+		resultType="CalendarDTO">
+		SELECT * FROM calendar WHERE id = #{ id } AND subject = #{ subject }
+	</select>
+
+	<select id="subjectDuplicateCheck" resultType="Integer">
+		SELECT
+		count(subject)
+		FROM calendar
+		WHERE id = #{ id } AND subject = #{ subject
+		}
+	</select>
+
+
+	<insert id="saveCalendar"
+		parameterType="com.care.KorTravel.dto.CalendarDTO">
+		INSERT INTO calendar (
+		id,
+		firstImage2,
+		title,
+		addr1,
+		addr2,
+		mapX,
+		mapY,
+		contentId,
+		subject,
+		delete_yn,
+		calendar_start,
+		calendar_end
+		)
+		VALUES
+		<foreach collection="saveCalendar" item="saveCalendar"
+			separator=",">
+			(
+			#{ id },
+			#{ saveCalendar.firstImage2 },
+			#{ saveCalendar.title },
+			#{ saveCalendar.addr1 },
+			#{ saveCalendar.addr2 },
+			#{ saveCalendar.mapX },
+			#{ saveCalendar.mapY },
+			#{ saveCalendar.contentId },
+			#{
+			saveCalendar.subject },
+			'n',
+			#{ saveCalendar.calendar_start },
+			#{
+			saveCalendar.calendar_end }
+			)
+		</foreach>
+	</insert>
+
+	<select id="getCalendar" parameterType="String"
+		resultType="CalendarDTO">
+		SELECT * FROM calendar WHERE id = #{ id }
+	</select>
+
+	<select id="getSpecPlace" resultType="FacilityDTO">
+		<!-- X 는 경도(lng), Y 는 위도(lat) -->
+		SELECT *
+		FROM facilities
+		WHERE mapX BETWEEN #{ swLng } AND #{ neLng }
+		AND mapY BETWEEN #{ swLat } AND
+		#{ neLat }
+		AND cat1 = #{ cat }
+	</select>
+
+	<select id="getMyRoute" parameterType="String"
+		resultType="CalendarDTO">
+		select subject, 
+			   firstImage2, 
+			   calendar_start, 
+			   calendar_end, 
+			   rownum()rn 
+		FROM calendar 
+		where id =#{id} ORDER by rn DESC
+	</select>
+
+	<select id="getSavedCalendar" resultType="CalendarDTO">
+		SELECT * FROM calendar WHERE id = #{ id } AND subject = #{ subject }
+	</select>
+
+	<delete id="deleteCalendar">
+		DELETE FROM calendar WHERE id = #{ id } AND subject = #{subject}
+	</delete>
+
+	<update id="routeSubjectUpdate" parameterType="CalendarDTO">
+		UPDATE calendar SET subject=#{subject}, memo=#{memo} WHERE id=#{id}
+		AND subject =#{preSubject}
+	</update>
+
+	<delete id = "deleteSpecCalendar">
+		DELETE FROM calendar WHERE id = #{ id } AND subject = #{ subject }
+	</delete>
+
+	<update id="updateCalendar"
+		parameterType="com.care.KorTravel.dto.CalendarDTO">
+		INSERT INTO calendar (
+			id,
+			firstImage2,
+			title,
+			addr1,
+			addr2,
+			mapX,
+			mapY,
+			contentId,
+			subject,
+			calendar_start,
+			calendar_end
+		)
+		VALUES
+		<foreach collection="updateCalendar" item="updateCalendar" separator=",">
+			(
+				#{ updateCalendar.id },
+				#{ updateCalendar.firstImage2 },
+				#{ updateCalendar.title },
+				#{ updateCalendar.addr1 },
+				#{ updateCalendar.addr2 },
+				#{ updateCalendar.mapX },
+				#{ updateCalendar.mapY },
+				#{ updateCalendar.contentId },
+				#{ updateCalendar.subject },
+				#{ updateCalendar.calendar_start },
+				#{ updateCalendar.calendar_end }
+			)
+		</foreach>
+	</update>
+	
+	<select id="checkSubject" parameterType="String" resultType="String">
+		SELECT * FROM calendar WHERE id=#{id} AND SUBJECT=#{subject}
+	</select>
+</mapper>

@@ -1,0 +1,191 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+
+.title {
+	margin-top: -8%;
+	height: 30px;
+}
+
+.title img {
+	width: 30px;
+	height: 30px;
+}
+
+.title span {
+	font-size: 20px;
+	color: #747474;
+}
+
+.subTitle span {
+	font-size: 40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.routoImg {
+	display: flex;
+}
+
+.gif {
+	position: static;
+	height: 300px;
+	width: 700px;
+	margin-left: 300px;
+}
+
+.content {
+	margin: 20px 0 10% 0;
+}
+
+.content hr {
+	margin-left: 200px;
+	width: 900px;
+}
+
+.RouteBtn {
+	cursor: pointer;
+	background-color: #fff;
+	width: 140px;
+	height: 40px;
+	border: 1px solid black;
+	font-size: 20px;
+	font-weight: bold;
+	float: right;
+}
+
+.RouteBtn:hover {
+	cursor: pointer;
+	font-size: 20px;
+	background-color: black;
+	width: 140px;
+	height: 40px;
+	color: #fff;
+	border: 1px solid #fff;
+	font-weight: bold;
+}
+
+.img {
+	width: 200px;
+	height: 180px;
+	border: 1px solid gray;
+	margin: 15px 0px 0 -60px;
+}
+
+.routeDiv {
+	float: right;
+	/* <<<<<<< .mine */
+	margin: -100px 400px 20px 0;
+	/* ||||||| .r513 */
+	margin: 20px 400px 20px 0;
+	/* ======= */
+	margin: 20px 330px 20px 0;
+	/* >>>>>>> .r523 */
+}
+
+.routeDiv1 {
+	float: right;
+	    margin: -20px 650px 60px 0
+}
+
+.myRoute {
+	margin: 80px 0 0 20%;
+}
+
+.myRouteWrap {
+	width: 800px;
+	margin: 0 0px 0 200px;
+	height: 210px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px 1px #F78181;
+	border-radius: 10px;
+}
+
+.routeInfo {
+	float: right;
+	margin: -150px 180px 0 0px;
+	width: 300px;
+}
+
+.routeTitle {
+	font-size: 25px;
+	margin-bottom: 20px;
+}
+
+.routeTitle:hover label {
+	font-size: 25px;
+	cursor: pointer;
+	background: linear-gradient(to top, #F78181 10%, transparent 10%);
+}
+
+.routeNon2 {
+	margin: 100px 0 100px 450px;
+}
+
+.myRouteNum span {
+	font-size: 40px;
+}
+
+.myRouteNum {
+	float: left;
+	margin: 70px 0px 0px -120px;
+}
+
+.subject {
+	margin: 100px 0 0 200px;
+}
+
+.subject p {
+	font-size: 15px;
+	color: gray;
+	margin-top: 40px;
+}
+
+.subject input {
+	font-size: 40px;
+	border: none;
+	text-align: center;
+	border-bottom-style: double;
+	border-bottom-color: #F78181;
+	border-width: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: auto;
+	float: left;
+	margin-right: 20px;
+}
+
+.myRoute_title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 500px;
+	float: left;
+	margin-right: 20px;
+}
+
+.mapWrap {
+	margin: 0px 0 50px 680px;
+}
+
+.textareaDiv {
+	    margin: 0px 0 -120px 245px;
+}
+
+.textareaDiv textarea {
+	font-size: 20px;
+	resize: none;
+}
+
+.routeDiv1 input[type=button] {
+	margin: 0px 30px -25px 0px;
+}

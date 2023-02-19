@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.care.KorTravel.adminDAO.MemberManageDAO">
+	<select id = "getList" parameterType = "Integer" resultType = "MemberDTO">
+		<choose>
+			<when test = "searchText == null or searchText == '' and options == null or options == ''">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM member)A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+			</when>
+			<when test = "options == '아이디'">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM member WHERE id LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+			</when>
+			<when test = "options == '이메일'">
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM member WHERE email LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+			</when>
+			<otherwise>
+				SELECT * FROM (SELECT *, ROWNUM()rn FROM member)A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id = "getMemberContent" parameterType = "Integer" resultType = "MemberDTO">
+		SELECT * FROM member WHERE num = #{ num }
+	</select>
+	
+	<select id = "getDataCount" resultType = "Integer">
+		<if test = "options == '아이디'">
+			SELECT MAX(ROWNUM()) FROM member WHERE id LIKE CONCAT('%', #{ searchText }, '%')
+		</if>
+		
+		<if test = "options == '이메일'">
+			SELECT MAX(ROWNUM()) FROM member WHERE email LIKE CONCAT('%', #{ searchText }, '%')
+		</if>
+		<if test = "options == null or options == ''">
+			SELECT MAX(ROWNUM()) FROM member
+		</if>
+	</select>
+	
+	<select id = "getMemberDetail" parameterType = "String" resultType = "MemberDTO">
+		SELECT * FROM member WHERE id = #{ id }
+	</select>
+	
+	<update id = "memberUpdate" parameterType = "MemberDTO">
+		UPDATE member SET phone = #{ phone }, gender = #{ gender }, addr1 = #{ addr1 }, addr2 = #{ addr2 } WHERE id = #{ id }
+	</update>
+	
+	<update id = "memberPasswordUpdate" parameterType = "MemberDTO">
+		UPDATE member SET pw = #{ pw } WHERE id = #{ id }
+	</update>
+</mapper>

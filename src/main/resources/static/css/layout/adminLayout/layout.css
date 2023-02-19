@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+body {
+   margin : 0;
+   padding : 0;
+   max-height : 1920px;
+}
+
+.layoutWrapper {
+   display : flex;
+   width : 100%;
+   background : #D8D8D8;
+   flex-direction : row;
+   max-height : inherit;
+}

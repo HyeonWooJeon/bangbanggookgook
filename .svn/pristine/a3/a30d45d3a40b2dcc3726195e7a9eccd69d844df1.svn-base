@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+.sectionWrapper {
+   width : 17%;
+   text-align : left;
+   height : 100%;
+   background : #ffffff;
+   height : 937px;
+   background : #595959;
+}
+
+.logo {
+    width : 85%;
+   	margin-top: 10px;
+    margin-bottom: 10px;	
+    margin-left: 25px;
+    cursor : pointer;
+}
+
+.list-group {
+   height : inherit;
+}
+
+.list-group-item-shapeFix {
+   height : 58px;
+   line-height : 25px;
+   cursor : pointer;
+   width : 70% !important;
+   margin : 23px 0 0 45px !important;
+}
+
+#noticeManageArea, #memberManageArea, #communityManageArea, #inquiryManageArea, #dataManageArea, #logoutBtn{
+	font-size: 15pt;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-left: 74px;
+	border: none;
+}
+
+
+.list-group { list-style:none; cursor:pointer }
+.list-group-item {
+	text-align: center;
+	line-height: 35px;
+	width: 70% !important;
+	float: left;
+	margin-right: 10px;
+	transition: all .3s ease
+}
+
+.list-group-item:hover { color:#ff8040; transition:all .3s ease }
+.list-group-item > .sp { position:relative }
+
+/*밑줄넣기 부분*/
+.list-group-item > .sp::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #000000;
+  transition:all .3s ease;
+}
+
+.list-group-item:hover > .sp::after {
+  content: '';
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid #000000;
+  transition:all .3s ease;
+}
+
+li {
+	border-radius : 7px;
+}
+
+.logout {
+	background : #FF6C6C !important;
+}

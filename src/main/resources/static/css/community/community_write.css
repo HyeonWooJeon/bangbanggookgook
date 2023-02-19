@@ -1,0 +1,116 @@
+.ck.ck-editor {
+	width: 100%;
+	max-width: 1100px;
+	
+}
+
+.ck-editor__editable {
+	min-height : 400px;
+	height: auto;
+}
+
+article{
+	margin-top : 50px;
+}
+
+.mb-3{
+	
+	width : 600px;
+	float : left;
+	margin-top : 5px;
+}
+.filebox{
+	float : right;
+	margin-bottom : 10px;
+	margin-left : 50px;
+	
+}
+
+.filebox .upload-name {
+    
+    height: 38px;
+    padding: 0 10px;
+    
+    border: 1px solid #dddddd;
+    width: 60%;
+    color: #999999;
+}
+.filebox label {
+    
+    padding: 10px 20px;
+    color: #fff;
+    
+    background-color: #999999;
+    cursor: pointer;
+    
+    margin-left: 10px;
+    border-radius : 5px;
+}
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.div_bt{
+	float : right;
+	
+}
+
+.commun_savewrite, .commun_cancelwrite{
+	width : 100px;
+	height : 40px;
+	margin-right : 10px;
+	margin-bottom : 20px;
+	border : none;
+	cursor : pointer;
+}
+
+.commun_savewrite:hover, .commun_cancelwrite:hover{
+	background-color : #34f40b;
+}
+
+.commun_savewrite{
+	background-color : #ea8515;
+}
+
+.comment_reply{
+	display : none;
+	width : 100%;
+	height : 160px;
+}
+
+
+.comment_reply_title{
+	clear : both;
+}
+
+.comment_reply_label{
+	width : 150px;
+	height : 150px;
+	border : 1px solid #666666;
+	background-color : white;
+	
+}
+
+.comment_edit_save, comment_edit_cancel{
+	width : 20px;
+	height : 10px;
+	
+}
+
+
+.write_div{
+	width : 100%;
+	
+}
+.mb-4{
+	clear : both;
+}
+
+
+
+

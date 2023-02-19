@@ -1,0 +1,48 @@
+@charset "UTF-8";
+.inquiryDetailWrapper {
+	display : flex;
+	width : 65%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	padding : 2px 2px 0 2px;
+	flex-direction : column;
+	border-radius : 7px;
+}
+
+.inquiryUpdateArea {
+	table-layout : fixed;
+	width : 97%;
+	height : 90%;
+	margin : auto;
+	padding-top : 20px;
+}
+
+.inquiryDetailTable {
+	margin : auto;
+	width : 70%;
+	height : 90%;
+}
+
+.inquiryDetailTable td {
+	padding-left : 10px;
+}
+
+.titleText, .inquiryWriteDate1, .inquiryWriteDate2, .contentText {
+	text-align : center;
+	line-height : 35px;
+} .contentText {
+	line-height : 250px;
+}
+
+.form-control {
+	resize : none;
+}
+
+.inquiryContentTd, .answerTd, .contentText {
+	overflow : hidden;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	max-height : 120px;
+	
+}

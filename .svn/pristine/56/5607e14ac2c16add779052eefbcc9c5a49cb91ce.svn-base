@@ -1,0 +1,78 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.title{
+	margin-top:5%;
+	height:30px;
+}
+.title img{
+	 width: 30px;
+  height: 30px;
+}
+.title span{
+	font-size: 20px;
+	color: #747474;
+}
+.subTitle span{
+	font-size:40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.inquiryList{
+	height:450px;
+}
+.myInquiryTable{
+	text-align : center;
+	    width: 1000px;
+    margin-left: 3% 0 0 5%;
+}
+.paging{
+	margin: 2% 0 0 -30%;
+}
+.myInquiryTable thead th{
+    border-bottom: 2px solid black;
+}
+.paging a{
+	text-decoration : none;
+	color : black;
+}
+.inquiryWriteBtn{
+	cursor: pointer;
+    background-color: #fff;
+    width: 100px;
+    height:30px;
+    border: 1px solid black;
+}
+.inquiryWriteBtn:hover{
+	cursor: pointer;
+    background-color: black;
+    width: 100px;
+    height:30px;
+    color:#fff;
+    border: 1px solid #fff;
+}
+.notAn{
+margin: auto;
+    width: 80px;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 5px;
+    border:1px solid black;
+}
+.an{
+margin: auto;
+    width: 80px;
+    background-color: #CC3D3D;
+    font-size: 15px;
+     border-radius: 5px;
+    border:1px solid #CC3D3D;
+    color:white;
+}

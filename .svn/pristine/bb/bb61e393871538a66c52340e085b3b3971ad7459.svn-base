@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+ .All{background-color:white; padding: 50px 50px 50px 50px; width: 1000px; margin:auto;}
+    
+ .img{width:700px; height: 500px;  border-radius: 5px;  margin: auto; }
+ 
+ .image{width:700px; height: 500px; border-radius: 5px; }
+ 
+ .title {font-size: 40px; font-weight: bold;  padding-bottom: 10px; text-align: center; }
+ 
+ .add1 {font-size: 15px; font-weight: bold; padding-bottom: 20px; text-align: center;  text-decoration: underline; 
+ text-decoration-color: pink;  text-decoration-thickness:3px;  text-decoration-style: wavy;  }
+  
+  .textHead{font-size: 25px; font-weight: bold; padding-top: 20px;}
+  
+ .text{font-size:15px; font-weight:bold;}

@@ -1,0 +1,106 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.wrap1{
+	margin-left:15%;
+}
+
+.title {
+	margin-top: 5%;
+	height: 30px;
+}
+
+.title img {
+	width: 30px;
+	height: 30px;
+}
+
+.title span {
+	font-size: 20px;
+	color: #747474;
+}
+
+.subTitle span {
+	font-size: 40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.titleHead{
+	font-size:30px;
+}
+hr{
+	  height: 3px;
+	  width:900px;
+	  background-color: black;
+	  margin: 20px 0 20px 0;
+}
+.inquiryBtn{
+	cursor: pointer;
+    background-color: #fff;
+    width: 100px;
+    height:30px;
+    border: 1px solid black;
+}
+.inquiryBtn:hover{
+		cursor: pointer;
+    background-color: black;
+    width: 100px;
+    height:30px;
+    color:#fff;
+    border: 1px solid #fff;
+}
+.inquiryDetailInfo{
+	float: right;
+	margin:-40px 550px 0 0;
+	font-size: 20px;
+}
+.writer{
+		float: right;
+	margin:0px 550px 0 0;
+	font-size: 20px;
+	
+}
+.my_write_fn{
+	float: right;
+	margin:0px 550px 0 0;
+}
+.inquiryContent{
+	margin: 80px 0 10px 0;
+    height: 400px;
+    width: 900px;
+    font-size: 20px;
+}
+
+.inquiryContent hr{
+	  height: 1px;
+	  width:900px;
+	  background-color: #EAEAEA;
+	  margin: 20px 0 20px 0;
+}
+.adminAnswer hr{
+	  height: 1px;
+	  width:900px;
+	  background-color: #EAEAEA;
+	  margin: 20px 0 20px 0;
+}
+.adminAnswerText textarea{
+	resize: none;
+	font-size : 18px;
+}
+.adminAnswerSpan span{
+	font-size: 25px;
+	font-weight: 600;
+}
+.adminAnswerText{
+    margin: 20px 0 10px 60px;
+	
+}

@@ -1,0 +1,13 @@
+package com.care.KorTravel.service;
+
+import org.springframework.ui.Model;
+
+public interface IConceptService {
+	public String selectFood();
+	 public String selectTour();
+	 public String selectRest();
+	 public String selectRecom();
+	 public String selectRandom(String cat1);
+	 public void selectDetail(Model model, String contentId);
+	
+}

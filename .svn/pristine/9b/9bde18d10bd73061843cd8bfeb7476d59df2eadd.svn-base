@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.care.KorTravel.adminDAO.DataManageDAO">
+	<select id = "getList" parameterType = "Integer" resultType = "FacilityDTO">
+		<if test = "searchText == null or searchText == '' and options == null or options == ''">
+			SELECT * 
+			FROM (
+					SELECT *, ROWNUM()rn 
+					FROM facilities
+					WHERE delete_yn NOT IN ('y')
+			)A 
+			WHERE A.rn 
+				BETWEEN #{ cursor_MIN }
+				AND #{ cursor_MAX }
+				AND delete_yn NOT IN ('y')
+		</if>
+		<if test = "options == '업체번호'">
+			SELECT * 
+			FROM (SELECT *, ROWNUM()rn 
+				  FROM facilities 
+				  WHERE contentId LIKE CONCAT('%', #{ searchText },'%'))A 
+			WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }		
+		</if>
+		
+		<if test = "options == '업체명'">
+			SELECT * FROM (SELECT *, ROWNUM()rn FROM facilities WHERE title LIKE CONCAT('%', #{ searchText },'%'))A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+		</if>
+		<if test="options == '업태'">
+			SELECT * FROM (SELECT *, ROWNUM()rn FROM facilities WHERE cat1 = #{ searchText } )A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+		</if>
+		<if test="options == '삭제기록'">
+			SELECT * FROM (SELECT *, ROWNUM()rn FROM facilities WHERE delete_yn = 'y')A WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX }
+		</if>
+	</select>
+	
+	<select id = "getDataCount" resultType = "Integer">
+		<if test = "options == null or options == ''">
+			SELECT MAX(ROWNUM()) 
+			FROM facilities
+			WHERE delete_yn = 'n'
+		</if>
+		<if test = "options == '업체번호'">
+			SELECT MAX(ROWNUM()) 
+			FROM facilities
+			WHERE contentId LIKE CONCAT('%', #{ searchText } ,'%')
+		</if>
+		<if test = "options == '업체명'">
+			SELECT MAX(ROWNUM()) 
+			FROM facilities 
+			WHERE title LIKE CONCAT('%', #{ searchText } ,'%')
+		</if>
+		<if test = "options == '업태'">
+			SELECT MAX(ROWNUM()) 
+			FROM facilities 
+			WHERE cat1 =  #{ searchText }
+		</if>
+		<if test="options == '삭제기록'">
+			SELECT MAX(ROWNUM())
+			FROM facilities
+			WHERE delete_yn = 'y'
+		</if>
+	</select>
+	
+	<update id = "recommendReg">
+		UPDATE facilities SET recommend = 'y' WHERE contentId = #{ contentId }
+	</update>
+	
+	<update id = "recommendReset">
+		UPDATE facilities SET recommend = 'n' WHERE contentId = #{ contentId }
+	</update>
+	
+	<select id = "getFacilityDetail" resultType = "FacilityDTO">
+		SELECT * FROM facilities WHERE contentId = #{ contentId }
+	</select>
+	
+	<select id = "getImagePath" resultType = "FacilityDTO">
+		SELECT firstImage, firstImage2 FROM facilities WHERE contentId = #{ contentId }
+	</select>
+	
+	<update id = "updateFacility" parameterType = "FacilityDTO">
+		UPDATE facilities 
+		SET addr1 = #{ addr1 }, 
+			addr2 = #{ addr2 }, 
+			areaCode = #{ areaCode }, 
+			cat1 = #{ cat1 },
+			cat2 = #{ cat2 }, 
+			contentId = #{ contentId },
+			firstImage = #{ firstImage },
+			firstImage2 = #{ firstImage2 },
+			mapX = #{ mapX },
+			mapY = #{ mapY },
+			tel = #{ tel },
+			title = #{ title },
+			zipcode = #{ zipcode },
+			overview = #{ overview }, 
+			recommend = #{ recommend }
+		WHERE contentId = #{ contentId }
+	</update>
+	
+	<update id = "deleteFacility">
+		UPDATE facilities SET delete_yn = 'y', recommend = 'n' WHERE contentId = #{ contentId } 
+	</update>
+	
+	<update id = "restoreFacility">
+		UPDATE facilities SET delete_yn = 'n' WHERE contentId = #{ contentId }
+	</update>
+</mapper>

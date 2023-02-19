@@ -1,0 +1,295 @@
+@charset "UTF-8";
+
+body {
+	margin : 0;
+	padding :0;
+	width: 100%;
+}
+
+.header {
+	height : 145px;
+	border-bottom : 1px solid gray;
+}
+
+/* content_top Attribute */
+.content_top {
+	height : 80px;
+	box-shadow: 0px 0px 6px 0px rgb(41 42 42 / 15%);
+}
+
+.spaceArea_top {
+	height : 40px;
+	width : 360px;
+	float : left;
+	text-align : center;
+	font-weight: bold;
+	margin-top: 25px;
+}
+
+.time_span {
+	background-color: #fff;
+	border: none;
+	display:inline-block;
+	cursor:pointer;
+	height: 35px;
+	width: 75px;
+	font-size: 12pt;
+	font-weight: 700;
+}
+
+.time_span:active {
+	position:relative;
+	top:1px;
+}
+
+.time_span:hover {
+	color: red;
+}
+
+.menuArea {
+	display : inline-block;
+	height : 80px;
+	width : 150px;
+	float : left;
+}
+
+.detailMenu {
+	height : 280px;
+	width : 210px;
+	
+	position : relative;
+	left : 60px;
+	bottom : 9px;
+	
+	display : none;
+	opacity : 0;
+	z-index : 10;
+	
+	text-decoration : none;
+	list-style : none;
+	
+	background : #13294b;
+}
+
+.detailMenu li {
+	color : white;
+	font-size : 17px;
+	font-weight : bold;
+	text-align : center;
+	padding : 19px 30px 19px 0;
+}
+
+.menubar {
+	width : 25px;
+	height : 25px;
+	margin : 25px 0 20px 60px;
+	cursor : pointer;
+}
+
+.logoArea {
+	display : inline-block;
+	width : 280px;
+	height : 80px;
+	float : left;
+	margin-right: 45px;
+}
+
+.logo {
+	box-sizing : border-box;
+	width : 250px;
+	margin-top : 15px;
+	cursor : pointer;
+}
+
+.searchArea {
+	display : inline-block;
+	height : 80px;
+	float : left;
+}
+
+.searchBox {
+	box-sizing : border-box;
+	height : 40px;
+	width : 520px;
+	margin-top : 18px;
+	font-size : 16px;
+	background : #eef0f2;
+	border : none;
+	border-radius : 8px;
+	padding-left : 20px;
+}
+.searchBox:focus{
+	background-color : white;
+	outline: 1px solid black;
+}
+
+.searchIcon {
+	position : relative;
+	top : 4px;
+	right : 40px;
+	width : 20px;
+	height : 20px;
+	cursor : pointer;
+}
+
+.infoArea {
+	display : inline-block;
+	margin-top : 28px;
+	margin-left : 25px;
+	font-size : 15px;
+	font-weight : 600;
+}
+
+.infoArea label {
+	cursor : pointer;
+}
+
+/* contetn_bottom Attribute */
+.content_bottom { height : 65px; }
+
+.spaceArea_bottom {
+	height : 65px;
+	width : 330px;
+	float : left;
+}
+
+.specialArea {
+	height : 65px;
+	width : 260px;
+	float : left;
+	text-align : center;
+	line-height : 62px;
+	font-size : 17px;
+	font-weight : 600;
+	cursor : pointer;
+}
+
+.specialArea:hover, .dateCreateArea:hover, .communityArea:hover, .searchProcArea:hover, .noticeArea:hover{
+	 text-decoration: 4px underline;
+	 text-underline-offset : 24px;
+}
+
+.dateCreateArea {
+	height : 65px;
+	width : 260px;
+	float : left;
+	text-align : center;
+	line-height : 62px;
+	font-size : 17px;
+	font-weight : 600;
+	cursor : pointer;
+}
+
+.communityArea {
+	height : 65px;
+	width : 260px;
+	float : left;
+	text-align : center;
+	line-height : 62px;
+	font-size : 17px;
+	font-weight : 600;
+	cursor : pointer;
+}
+.noticeArea {
+	height : 65px;
+	width : 260px;
+	float : left;
+	text-align : center;
+	line-height : 62px;
+	font-size : 17px;
+	font-weight : 600;
+	cursor : pointer;
+}
+
+.content_bottom label { cursor : pointer; }
+
+/**/
+.menuDetailArea{
+	position : relative;
+	background : red;
+	left : 200px;
+	width: 210px;
+    height: 417px;
+}
+
+a{
+	text-decoration-line : none !important;
+	text-decoration : none !important;
+	color : white;
+}
+
+.search_box{
+	position : absolute !important;
+	width : 520px !important;
+	height : auto !important;
+	border : 1px solid black !important;
+	background-color : white !important;
+	transform : translate(132%,-5%) !important;
+	border-radius : 5px !important;
+	box-sizing: border-box !important;
+	
+}
+
+.search_box ul{
+	margin-top : 30px !important;
+}
+
+.search_box ul li{
+	padding-bottom: 2px !important;
+}
+
+.search_close_box{
+	position : relative !important;
+	width : 487.5px !important;
+	height : 29px !important;
+	text-align : right !important;
+	padding-right : 30px !important;
+	padding-top : 10px !important;
+	background-color : #EEF0F2 !important;
+	transform : translate(0%,0%) !important;
+	border-bottom-left-radius : 5px !important;
+	border-bottom-right-radius : 5px !important;
+	z-index: 5 !important;
+}
+
+li{
+	list-style-type : none !important;
+	margin-bottom : 10px !important;}
+	
+.no_info_main{
+	height : 267px;
+	width : 100%;
+	
+}
+
+.no_info_middle{
+	margin : 0 auto;
+	width : 85%;
+	height : 100%;
+}
+
+.no_info_imgDiv{
+	vertical-align: bottom;
+}
+
+.searchProcArea{
+	height : 65px;
+	width : 260px;
+	float : left;
+	text-align : center;
+	line-height : 62px;
+	font-size : 17px;
+	font-weight : 600;
+	cursor : pointer;
+}
+
+
+
+
+
+
+
+
+
+
+

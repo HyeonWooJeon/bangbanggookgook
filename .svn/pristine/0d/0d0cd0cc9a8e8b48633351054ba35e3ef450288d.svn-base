@@ -1,0 +1,37 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.title{
+	margin-top:5%;
+	height:30px;
+}
+.title img{
+	 width: 30px;
+  height: 30px;
+}
+.title span{
+	font-size: 20px;
+	color: #747474;
+}
+.subTitle span{
+	font-size:40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+
+.routeImg img{
+	margin-top: 2%;
+	width: 650px;
+	
+}
+.content hr{
+	width: 650px;
+}

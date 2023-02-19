@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.noticeWriteWrapper {
+	display : flex;
+	width : 65%;
+	background : white;
+	margin : auto;
+	box-shadow : 8px 8px 8px black;
+	flex-direction : column;
+}
+
+/* notice Write */
+.noticeWriteArea {
+	table-layout : fixed;
+	width : 97%;
+	height : 90%;
+	margin : auto;
+	margin-top : 24px;
+	padding-top : 20px;
+}
+
+.noticeTable {
+	box-sizing : border-box;
+	width : 70%;
+	height : 90%;
+	margin : auto;
+	overflow : hidden;
+	border : 1px solid gray;
+	border-radius : 5px;
+}
+
+.noticeSubject, .noticeContent {
+	resize : none;
+}
+
+.uploadBtn {
+	float : right;
+	margin-right : 50px;
+	width : 60px;
+}
+
+.table-shapeFix {
+	margin-top : -25px;
+}

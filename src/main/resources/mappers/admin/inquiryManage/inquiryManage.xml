@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.care.KorTravel.adminDAO.CSDAO">
+	<select id = "getList" parameterType = "Integer" resultType = "InquiryDTO">
+		<if test = "searchText == null or searchText == '' and options == null or options == ''">
+			SELECT * 
+			FROM ( SELECT * 
+				   FROM (SELECT * , ROWNUM()rn 
+						 FROM inquiry)B 
+			WHERE B.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } )A 
+			ORDER BY A.num DESC
+		</if>
+		
+		<if test = "options == '제목'">
+			SELECT * 
+			FROM (SELECT *, ROWNUM()rn 
+				  FROM inquiry 
+				  WHERE title LIKE CONCAT('%', #{ searchText },'%'))A 
+			WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC;
+		</if>
+		
+		<if test = "options == '내용'">
+			SELECT * 
+			FROM (SELECT *, ROWNUM()rn 
+				  FROM inquiry 
+				  WHERE inquiryContent LIKE CONCAT('%', #{ searchText },'%'))A 
+			WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC;
+		</if>
+		
+		<if test = "options == '답변미완료'">
+			SELECT * 
+			FROM (SELECT *, ROWNUM()rn 
+				  FROM inquiry 
+				  WHERE result = 'n')A
+			WHERE A.rn BETWEEN #{ cursor_MIN } AND #{ cursor_MAX } ORDER BY A.rn DESC;
+		</if>
+	</select>
+	
+	<select id = "getInquiryContent" resultType = "InquiryDTO">
+		SELECT * 
+		FROM inquiry 
+		WHERE num = #{ num }
+	</select>
+	
+	<select id = "getDataCount" resultType = "Integer">
+		<if test = "options == '제목'">
+			SELECT MAX(ROWNUM()) 
+			FROM inquiry 
+			WHERE title LIKE CONCAT('%', #{ searchText } ,'%')
+		</if>
+		
+		<if test = "options == '내용'">
+			SELECT MAX(ROWNUM()) 
+			FROM inquiry 
+			WHERE inquiryContent LIKE CONCAT('%', #{ searchText } ,'%')
+		</if>
+		<if test = "options == null or options == ''">
+			SELECT MAX(ROWNUM()) 
+			FROM inquiry
+		</if>
+	</select>
+	
+	<update id = "answerRegist">
+		UPDATE inquiry SET result = 'y', answer = #{ answer } WHERE num = #{ num }
+	</update>
+	
+	<delete id = "delete">
+		DELETE FROM inquiry WHERE num = #{ num }
+	</delete>
+	
+	<update id = "update">
+		UPDATE inquiry SET answer = #{ answer } WHERE num = #{ num }
+	</update>
+</mapper>

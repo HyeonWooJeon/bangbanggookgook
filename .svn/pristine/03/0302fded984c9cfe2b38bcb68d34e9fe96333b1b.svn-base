@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- css -->
+<link rel = "stylesheet" href = "/css/admin/data/dataRenewal.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<script>
+	var xmlReq;
+	function getData(cat1) {
+		console.log(cat1);
+		xmlReq = new XMLHttpRequest();
+		xmlReq.onreadystatechange = result;
+		xmlReq.open("POST", "/getData");
+		xmlReq.send(cat1);
+	}
+	
+	function result() {
+		var readyState = document.getElementById("readyState");
+		var status = document.getElementById("status");
+		
+		readyState.innerText = xmlReq.readyState;
+		status.innerText = xmlReq.status;
+	}
+</script>
+
+</head>
+<body>
+	<div class = "dataRenewalWrapper">
+		<div class = "btnArea1">
+			<label>[A02]_인문(문화/예술/역사)</label>
+			<button class = "btn btn-secondary btn-secondary-shapeFix"
+					onclick = "getData('A02')">
+				데이터 가져오기
+			</button>
+			<br>
+			
+			<label>[A05]_음식점</label>
+			<button class = "btn btn-secondary btn-secondary-shapeFix"
+					onclick = "getData('A05')">
+					데이터 가져오기
+			</button>
+			<br>
+			
+			<label>[B02]_숙박시설</label>
+			<button class = "btn btn-secondary btn-secondary-shapeFix"
+					onclick = "getData('B02')">
+					데이터 가져오기
+			</button>
+		</div>
+		<label id = "readyState"></label>
+		<label id = "status"></label>
+	</div>
+</body>
+</html>

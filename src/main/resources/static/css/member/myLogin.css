@@ -1,0 +1,67 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+.wrap {
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+	margin-left: 25%;
+}
+.title{
+	margin-top:5%;
+	height:30px;
+}
+.title img{
+	 width: 30px;
+  height: 30px;
+}
+.title span{
+	font-size: 20px;
+	color: #747474;
+}
+.subTitle span{
+	font-size:40px;
+	font-weight: bold;
+}
+/*제목 끝 */
+.table2{
+	    margin: 1% 0 5% 10%;
+    text-align: center;
+    width:1000px;
+}
+.table2 thead tr {
+    background-color: #fff;
+    text-align: left;
+    font-size: 20px;
+}
+.table2 th,
+.table2 td {
+    padding: 12px 15px;
+}
+.table2 tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.table2 thead tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table2 tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table2 tbody tr:last-of-type {
+    border-bottom: 2px solid black;
+}
+.table2 tbody tr:first-of-type {
+    border-top: 2px solid black;
+}
+.table2 tbody tr.active-row {
+    font-weight: bold;
+    color: black;
+}
+
+.table2 tr:active{
+	pointer-events: none;
+}
